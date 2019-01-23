@@ -47,22 +47,6 @@ function convertMarkdownToHtml(fn) {
     markdownContainer.replaceWith(div)
     fn && fn.call()
 }
-
-
-writeCss('', css1, () => { // writeCss call the function
-    createPaper(() => {
-        writeMarkdown(md, () => {
-            writeCss(css1, css2, () => {
-                convertMarkdownToHtml(() => {
-                    writeCss(css1 + css2, css3, () => {
-                        console.log('完成')
-                    })
-                })
-            })
-        })
-    })
-})
-
 var css1 = `/*
 *面试官您好！
 *很高兴您能在百忙之中查阅我的简历
@@ -143,5 +127,21 @@ let css3 = `
    * 谢谢观看
    */
   `
+
+writeCss('', css1, () => { // writeCss call the function
+    createPaper(() => {
+        writeMarkdown(md, () => {
+            writeCss(css1, css2, () => {
+                convertMarkdownToHtml(() => {
+                    writeCss(css1 + css2, css3, () => {
+                        console.log('完成')
+                    })
+                })
+            })
+        })
+    })
+})
+
+
 
 
